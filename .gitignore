@@ -1,0 +1,7 @@
+
+*.NavData
+
+nb-configuration.xml
+target/
+
+nbactions.xml
