@@ -6,7 +6,14 @@
         Purpose of the stylesheet follows.
 */
 
-root { 
-    display: block;
+.ui-widget {
+    font-size:80%;
 }
 
+.ui-widget .ui-widget {
+    font-size:100%;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item{
+    font-size:95%;
+}
