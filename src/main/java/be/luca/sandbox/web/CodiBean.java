@@ -4,34 +4,41 @@
  */
 package be.luca.sandbox.web;
 
+import be.luca.sandbox.entity.Person;
+import be.luca.sandbox.service.PersonServiceBeanLocal;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
-import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
 
 /**
  *
  * @author contribute
  */
 @Named
-@ViewAccessScoped
-public class CodiBean implements Serializable{
+@ViewScoped
+public class CodiBean implements Serializable {
 
-    private String name;
+    @EJB
+    private PersonServiceBeanLocal personService;
     
+    private List<Person> personList = new ArrayList<Person>();
+
     @PostConstruct
-    public void init(){
-        name="Luca";
+    public void init() {
+
+        personList = personService.getAllPersons();
+        System.out.println(personList.size() + " persons found!");
     }
 
-    public String getName() {
-        return name;
+    public List<Person> getPersonList() {
+        return personList;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPersonList(List<Person> personList) {
+        this.personList = personList;
     }
-    
-    
-    
 }
