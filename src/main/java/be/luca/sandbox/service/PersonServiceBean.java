@@ -25,6 +25,4 @@ public class PersonServiceBean implements PersonServiceBeanLocal {
         return em.createNamedQuery("Person.findAll").getResultList();
     }
 
-    
-
 }
