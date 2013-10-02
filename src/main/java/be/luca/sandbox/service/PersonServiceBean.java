@@ -25,4 +25,11 @@ public class PersonServiceBean implements PersonServiceBeanLocal {
         return em.createNamedQuery("Person.findAll").getResultList();
     }
 
+    @Override
+    public Person mergePerson(Person p) {
+        return em.merge(p);
+    }
+    
+    
+
 }

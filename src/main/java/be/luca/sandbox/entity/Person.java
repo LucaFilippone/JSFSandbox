@@ -15,13 +15,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author contribute
+ * @author Luca
  */
 @Entity
 @Table(name = "PERSON")
@@ -41,16 +43,24 @@ public class Person implements Serializable {
     @SequenceGenerator(name="PERSON_ID_GENERATOR", sequenceName="SEQ_PERSON", allocationSize=1, initialValue=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="PERSON_ID_GENERATOR")
     private Long id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "FIRST_NAME", nullable = false, length = 255)
     private String firstName;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "NAME", nullable = false, length = 255)
     private String name;
+    
+    @Column(name="AGE", nullable=false)
+    @NotNull
+    @Min(10) @Max(99)  
+    private Long age;
+
 
     public Person() {
     }
@@ -89,12 +99,22 @@ public class Person implements Serializable {
         this.name = name;
     }
 
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
+    
 
     @Override
     public boolean equals(Object object) {

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/WEB-INF/templates/mainTemplate.xhtml"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    
+    <ui:define name="content">
+        <p:panelGrid columns="2" id="personGrid">
+            
+             <f:facet name="header">  
+                Add new person
+             </f:facet>
+            
+            <p:outputLabel value="First name" for="txtFirstName"/>
+            <p:inputText id="txtFirstName" value="#{clientSideValidationBean.person.firstName}" required="true"/>
+            
+            <p:outputLabel value="Last name" for="txtLastName"/>
+            <p:inputText id="txtLastName" value="#{clientSideValidationBean.person.name}" required="true"/>
+            
+            <p:outputLabel for="spinAge" value="Age" />
+            <p:spinner id="spinAge" value="#{clientSideValidationBean.person.age}" required="true" label="Age"/>
+            
+            <f:facet name="footer">
+                <p:commandButton value="Add person" actionListener="#{clientSideValidationBean.addPerson()}" 
+                                 validateClient="true" ajax="false"/> 
+            </f:facet>
+        </p:panelGrid>
+    </ui:define>
+    
+</ui:composition>

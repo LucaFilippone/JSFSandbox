@@ -17,4 +17,6 @@ public interface PersonServiceBeanLocal {
 
     List<Person> getAllPersons();
     
+    Person mergePerson(Person p);
+    
 }
