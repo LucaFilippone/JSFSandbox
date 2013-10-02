@@ -6,10 +6,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       template="/WEB-INF/templates/mainTemplate.xhtml"
       xmlns:f="http://java.sun.com/jsf/core">
-    
+ 
     
     <ui:define name="content">
-        <p:dataTable value="#{dialogFrameworkBean.allPersons}"
+        <p:dataTable id="personTable" value="#{dialogFrameworkBean.allPersons}"
                      filteredValue="#{dialogFrameworkBean.filteredPersons}"
                      paginatorAlwaysVisible="false" paginatorPosition="bottom"
                      var="p">
@@ -20,7 +20,9 @@
             
             <p:column width="80">
                 <p:commandButton icon="ui-icon-pencil" />
-                <p:commandButton icon="ui-icon-trash" />
+                <p:commandButton icon="ui-icon-trash" actionListener="#{dialogFrameworkBean.deletePerson(p)}" update="personTable">
+                    <p:confirm message="Are you sure you want to delete this record?" header="Delete record"  />
+                </p:commandButton>
             </p:column>
             
             <p:column headerText="First name">

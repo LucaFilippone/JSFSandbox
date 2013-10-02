@@ -19,4 +19,6 @@ public interface PersonServiceBeanLocal {
     
     Person mergePerson(Person p);
     
+    void deletePerson(Person p);
+    
 }

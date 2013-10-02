@@ -29,7 +29,10 @@ public class PersonServiceBean implements PersonServiceBeanLocal {
     public Person mergePerson(Person p) {
         return em.merge(p);
     }
-    
-    
+
+    @Override
+    public void deletePerson(Person p) {
+        em.remove(em.find(Person.class, p.getId()));
+    }
 
 }

@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
+import org.omnifaces.util.Messages;
 
 /**
  *
@@ -31,6 +32,13 @@ public class DialogFrameworkBean implements Serializable{
     
     @PostConstruct
     public void init(){
+        loadAllPersons();
+    }
+    
+    public void deletePerson(Person p){
+        personServiceBean.deletePerson(p);
+        Messages.addGlobalInfo("Person "+p.getFirstName()+" "+p.getName()+" has been removed");
+     
         loadAllPersons();
     }
     
