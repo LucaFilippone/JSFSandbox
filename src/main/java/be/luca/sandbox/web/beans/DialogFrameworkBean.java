@@ -30,6 +30,7 @@ public class DialogFrameworkBean implements Serializable{
     
     @EJB
     private PersonServiceBeanLocal personServiceBean;
+   
 
     private List<Person> allPersons = new ArrayList<Person>();
     private List<Person> filteredPersons;
@@ -61,6 +62,7 @@ public class DialogFrameworkBean implements Serializable{
         
         
         RequestContext.getCurrentInstance().openDialog("dialogs/personDialog",options,null);
+        
     }
     
     
