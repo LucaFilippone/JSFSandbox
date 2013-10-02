@@ -28,10 +28,8 @@
             <p:message for="txtLastName" display="both" />  
             
             <p:outputLabel for="spinAge" value="Age" />
-            <p:spinner id="spinAge" value="#{clientSideValidationBean.person.age}" required="true" label="Age">
-                <p:clientValidator />
-            </p:spinner>
-            <p:message for="spinAge" display="both" />
+            <p:spinner id="spinAge" value="#{clientSideValidationBean.person.age}" required="true" label="Age" />
+          
                        
             <f:facet name="footer">
                 <p:commandButton value="Add person" actionListener="#{clientSideValidationBean.addPerson()}" 
