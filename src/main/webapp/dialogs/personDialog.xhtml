@@ -1,17 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" 
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      template="/WEB-INF/templates/dialogTemplate.xhtml"
-      xmlns:f="http://java.sun.com/jsf/core">
-    
-   <ui:param name="dialogTitle" value="Person" />
-   
-   <ui:define name="content"> 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/dialogTemplate.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:param name="dialogTitle" value="Add/Edit person" />
+
+    <ui:define name="content"> 
+        <p:panelGrid columns="3">
+            <p:outputLabel value="First name" for="txtFirstName"/>
+            <p:inputText id="txtFirstName" value="#{personDialogBean.person.firstName}" required="true">
+                <p:clientValidator/>
+            </p:inputText>
+            <p:message for="txtFirstName" display="both" /> 
+
+            <p:outputLabel value="Last name" for="txtLastName"/>
+            <p:inputText id="txtLastName" value="#{personDialogBean.person.name}" required="true">
+                <p:clientValidator />
+            </p:inputText>
+            <p:message for="txtLastName" display="both" />  
+
+            <p:outputLabel for="spinAge" value="Age" />
+            <p:spinner id="spinAge" value="#{personDialogBean.person.age}" required="true" label="Age" />
+
+            <p:spacer height="10" width="0" />
+        </p:panelGrid>
         
-        
-   </ui:define>
+        <p:commandButton value="OK" actionListener="#{personDialogBean.returnPerson()}" validateClient="true"/>
+        <p:commandButton value="Cancel" immediate="true"  />
+    </ui:define>
 </ui:composition>
 

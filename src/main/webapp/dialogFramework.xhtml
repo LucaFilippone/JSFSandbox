@@ -42,7 +42,7 @@
         <p:spacer height="20" width="0"/>
         
         <p:commandButton value="Add person" actionListener="#{dialogFrameworkBean.showDialog()}">
-            
+            <p:ajax event="dialogReturn" listener="#{dialogFrameworkBean.onAddPersonDialogReturn}" update="personTable" />
         </p:commandButton>
   
     </ui:define>

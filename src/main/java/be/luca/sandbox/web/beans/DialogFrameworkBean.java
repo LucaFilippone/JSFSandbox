@@ -18,6 +18,7 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -45,13 +46,23 @@ public class DialogFrameworkBean implements Serializable{
         loadAllPersons();
     }
     
+    public void onAddPersonDialogReturn(SelectEvent event){
+        Person returnedPerson = (Person) event.getObject();
+        
+        personServiceBean.mergePerson(returnedPerson);
+        
+        loadAllPersons();
+    }
+    
     public void showDialog(){
         Map<String,Object> options = new HashMap<String, Object>();  
         options.put("modal", true); 
-        options.put("resizable",false);
+        options.put("contentHeight", 250);
+        
         
         RequestContext.getCurrentInstance().openDialog("dialogs/personDialog",options,null);
     }
+    
     
     private void loadAllPersons(){
         allPersons = personServiceBean.getAllPersons();
