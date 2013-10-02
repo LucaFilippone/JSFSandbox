@@ -45,14 +45,12 @@ public class Person implements Serializable {
     private Long id;
     
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 3, max = 255)
     @Column(name = "FIRST_NAME", nullable = false, length = 255)
     private String firstName;
     
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 3, max = 255)
     @Column(name = "NAME", nullable = false, length = 255)
     private String name;
     

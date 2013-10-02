@@ -9,21 +9,30 @@
     
     
     <ui:define name="content">
-        <p:panelGrid columns="2" id="personGrid">
+        <p:panelGrid columns="3" id="personGrid">
             
              <f:facet name="header">  
                 Add new person
              </f:facet>
             
             <p:outputLabel value="First name" for="txtFirstName"/>
-            <p:inputText id="txtFirstName" value="#{clientSideValidationBean.person.firstName}" required="true"/>
+            <p:inputText id="txtFirstName" value="#{clientSideValidationBean.person.firstName}" required="true">
+                 <p:clientValidator />
+            </p:inputText>
+            <p:message for="txtFirstName" display="both" /> 
             
             <p:outputLabel value="Last name" for="txtLastName"/>
-            <p:inputText id="txtLastName" value="#{clientSideValidationBean.person.name}" required="true"/>
+            <p:inputText id="txtLastName" value="#{clientSideValidationBean.person.name}" required="true">
+               <p:clientValidator />
+            </p:inputText>
+            <p:message for="txtLastName" display="both" />  
             
             <p:outputLabel for="spinAge" value="Age" />
-            <p:spinner id="spinAge" value="#{clientSideValidationBean.person.age}" required="true" label="Age"/>
-            
+            <p:spinner id="spinAge" value="#{clientSideValidationBean.person.age}" required="true" label="Age">
+                <p:clientValidator />
+            </p:spinner>
+            <p:message for="spinAge" display="both" />
+                       
             <f:facet name="footer">
                 <p:commandButton value="Add person" actionListener="#{clientSideValidationBean.addPerson()}" 
                                  validateClient="true" ajax="false"/> 
