@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/WEB-INF/templates/mainTemplate.xhtml"
+      xmlns:f="http://java.sun.com/jsf/core">
+ 
+    
+    <ui:define name="content">
+        <p:dataTable id="personTable" value="#{dialogFrameworkBean.allPersons}"
+                     filteredValue="#{dialogFrameworkBean.filteredPersons}"
+                     paginatorAlwaysVisible="false" paginatorPosition="bottom"
+                     var="p">
+            
+            <f:facet name="header">
+                Person management
+            </f:facet>
+            
+            <p:column width="80">
+                <p:commandButton icon="ui-icon-pencil" />
+                <p:commandButton icon="ui-icon-trash" actionListener="#{dialogFrameworkBean.deletePerson(p)}" update="personTable">
+                    <p:confirm message="Are you sure you want to delete this record?" header="Delete record"  />
+                </p:commandButton>
+            </p:column>
+            
+            <p:column headerText="First name">
+                <h:outputText value="#{p.firstName}" />
+            </p:column>
+            
+            <p:column headerText="Last name">
+                <h:outputText value="#{p.name}" />
+            </p:column>
+            
+            <p:column headerText="Age">
+                <h:outputText value="#{p.age}" />
+            </p:column>
+            
+        </p:dataTable>
+        
+        <p:spacer height="20" width="0"/>
+        
+        <p:commandButton value="Add person" actionListener="#{dialogFrameworkBean.showDialog()}">
+            <p:ajax event="dialogReturn" listener="#{dialogFrameworkBean.onAddPersonDialogReturn}" update="personTable" />
+        </p:commandButton>
+  
+    </ui:define>
+    
+</ui:composition>
+
