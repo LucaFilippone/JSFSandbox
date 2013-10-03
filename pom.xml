@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans.hint.deploy.server>JBoss4</netbeans.hint.deploy.server>
         
-        <primefaces.version>4.0.RC1</primefaces.version>
+        <primefaces.version>4.0</primefaces.version>
         <codi.version>1.0.5</codi.version>
         <omnifaces.version>1.6</omnifaces.version>
     </properties>
