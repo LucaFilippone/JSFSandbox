@@ -20,6 +20,7 @@
     </properties>
 
     <dependencies>
+      
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -134,7 +135,7 @@
                 </property>
             </activation>
             <properties>
-                <primefaces.version>4.0.RC1</primefaces.version>
+                <primefaces.version>4.0</primefaces.version>
             </properties>
         </profile>
        
