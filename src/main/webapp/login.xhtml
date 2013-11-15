@@ -1,31 +1,21 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" 
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      template="/WEB-INF/templates/mainTemplate.xhtml"
-      xmlns:f="http://java.sun.com/jsf/core">
-    
-    
-    <ui:define name="content">
-        <p:panelGrid columns="2" id="loginGrid">
-            
-             <f:facet name="header">  
-                Login
-             </f:facet>
-            
-            <p:outputLabel for="txtUser" value="Username" />
-            <p:inputText id="txtUser" value="#{loginBean.userName}" required="true"/>
-            
-            <p:outputLabel for="txtPassword" value="Password" />
-            <p:inputText id="txtPassword" value="#{loginBean.password}" required="true" />
-                       
-            <f:facet name="footer">
-                <p:commandButton value="Log in" icon="ui-icon-check" action="#{loginBean.login()}" 
-                                 validateClient="true" ajax="false"/> 
-            </f:facet>
-        </p:panelGrid>
-    </ui:define>
-    
-</ui:composition>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    JSF 2 Login
+</h:head>
+<h:body>
+    <p>Login to access secure pages:</p>
+    <form method="post" action="j_security_check">
+        <h:panelGrid columns="2">
+            <h:outputLabel  value="Username" />
+            <input type="text" id="j_username" name="j_username" />
+            <h:outputLabel  value="Password" />
+            <input type="password" id="j_password" name="j_password" />
+            <input type="submit" name="submit" value="Login" />
+        </h:panelGrid>
+        <br />
+    </form>
+</h:body>
+</html>

@@ -6,74 +6,33 @@ package be.luca.sandbox.web.beans;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import javax.inject.Named;
-import org.omnifaces.util.Messages;
 
 /**
  *
  * @author Luca
  */
-@Named(value = "loginBean")
+@Named
 @SessionScoped
 public class LoginBean implements Serializable{
     
-    private static final String USER_INFO_REDIRECT="secured/userInfo.xhtml?faces-redirect=true";
-    private static final String USER_LOGIN_PAGE="../login.xhtml?faces-redirect=true";
+    private static final String INDEX_PAGE_REDIRECT="/index.xhtml?faces-redirect=true";
     
-    // Simple user 
-     private static final String[] users = {"luca:azerty","bla:bla"}; 
-    
-    private String userName;
-    private String password;
-    
-    private boolean loggedIn;
-    
-    public String login(){
-        for(String user : users){
-            String dbUsername = user.split(":")[0];
-            String dbPassword = user.split(":")[1];
-             
-            // Successful login
-            if (dbUsername.equals(getUserName()) && dbPassword.equals(getPassword())) {
-                loggedIn = true;
-                return USER_INFO_REDIRECT;
-            }
-        }
-        
-        return null;
-    }
-    
+    private String username;
+
     public String logout(){
-        loggedIn=false;
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         
-        
-        Messages.addGlobalInfo("Successfully logged out "+getUserName());
-        
-        setUserName(null);
-        setPassword(null);
-        
-        return USER_LOGIN_PAGE;
+        return INDEX_PAGE_REDIRECT;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }   
-
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
-    
 }

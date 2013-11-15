@@ -10,7 +10,14 @@
             <p:commandLink value="Client side validation" action="/clientSideValidation.xhtml?faces-redirect=true" />
             <p:commandLink value="Dialog framework" action="/dialogFramework.xhtml?faces-redirect=true" />
             <p:commandLink value="Growl click listener" action="/growlClick.xhtml?faces-redirect=true" />
-            <p:commandLink value="Login filter " action="/login.xhtml?faces-redirect=true"/>
+  
+            <p:spacer height="10" />
+            <h:panelGroup>
+                <h:outputText value="Secured area" style="font-weight: bold;"/>
+                <p:commandLink value="(Log out)" action="#{loginBean.logout()}" ajax="false" />
+            </h:panelGroup>
+            <p:commandLink value="Admin area" action="/secured/admin/admin.xhtml?faces-redirect=true"/>
+            <p:commandLink value="User area" action="/secured/user/user.xhtml?faces-redirect=true"/>
         </h:panelGrid>
     </h:form>
 </ui:composition>
