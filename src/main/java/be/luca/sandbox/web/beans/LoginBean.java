@@ -5,10 +5,12 @@
 package be.luca.sandbox.web.beans;
 
 import java.io.Serializable;
+import java.security.Principal;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import javax.inject.Named;
+import org.omnifaces.util.Faces;
 
 /**
  *
@@ -23,6 +25,11 @@ public class LoginBean implements Serializable{
     private String username;
 
     public String logout(){
+        //Principal principal = FacesContext.getCurrentInstance()
+                    //.getExternalContext().getUserPrincipal();
+        
+        System.out.println("Logged out: "+Faces.getRemoteUser());
+        
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         
         return INDEX_PAGE_REDIRECT;

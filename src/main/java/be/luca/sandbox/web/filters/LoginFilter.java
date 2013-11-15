@@ -6,6 +6,7 @@ package be.luca.sandbox.web.filters;
 
 import be.luca.sandbox.web.beans.LoginBean;
 import java.io.IOException;
+import java.security.Principal;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.faces.context.FacesContext;
@@ -25,10 +26,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class LoginFilter implements Filter {
     
-    @Inject
-    private LoginBean loginBean;
-   
-    
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         //Do nothing
@@ -36,7 +33,7 @@ public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-       
+        
         chain.doFilter(request, response);
         
     }
