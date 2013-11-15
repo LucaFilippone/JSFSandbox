@@ -22,7 +22,13 @@ public class PersonServiceBean implements PersonServiceBeanLocal {
     
     @Override
     public List<Person> getAllPersons() {
-        return em.createNamedQuery("Person.findAll").getResultList();
+        List<Person> persons = em.createNamedQuery("Person.findAll").getResultList();
+        
+        for(Person p : persons){
+            System.out.println("==> "+p.getChildList().size());
+        }
+        
+        return persons;
     }
 
     @Override

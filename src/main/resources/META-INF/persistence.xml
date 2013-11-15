@@ -6,6 +6,7 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     -->
     <class>be.luca.sandbox.entity.Person</class>
+    <class>be.luca.sandbox.entity.Child</class>
     <properties/>
   </persistence-unit>
 </persistence>
